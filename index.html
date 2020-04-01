@@ -14,18 +14,18 @@
         p a{font-family:Helvetica, Arial, sans-serif; font-size:12px; padding:3px 5px; background:black; color:silver; text-decoration: none;}
         p a:hover{text-decoration: underline; color:white;}
     </style>
-    <title>p5.js + Chart.js</title>
+    <title>Fran Hepp + p5.js + Chart.js</title>
 </head>
 
 <body>
 
     <script>
         var url = "https://pomber.github.io/covid19/timeseries.json";
-        var casos, indonesia, malasia, singapur;
+        var casos, indonesia, malaysia, singapore;
         var marzo = [];
         var marzo_indonesia = [];
-        var marzo_malasia = [];
-        var marzo_singapur = [];
+        var marzo_malaysia = [];
+        var marzo_singapore = [];
 
         function preload() {
             casos = loadJSON(url);
@@ -41,8 +41,8 @@
             }
 
             indonesia = casos.Indonesia;
-            malasia = casos.Malasia;
-            singapur = casos.Singapur;
+            malasia = casos.Malaysia;
+            singapur = casos.Singapore;
 
             for (let x = 0; x < indonesia.length; x++) {
                 if (indonesia[x].date.includes("-3-")) {
@@ -50,21 +50,21 @@
                 }
             }
 
-            for (let x = 0; x < malasia.length; x++) {
-                if (malasia[x].date.includes("-3-")) {
-                    marzo_malasia.push(malasia[x].confirmed);
+            for (let x = 0; x < malaysia.length; x++) {
+                if (malaysia[x].date.includes("-3-")) {
+                    marzo_malaysia.push(malaysia[x].confirmed);
                 }
             }
 
-            for (let x = 0; x < singapur.length; x++) {
-                if (singapur[x].date.includes("-3-")) {
-                    marzo_singapur.push(singapur[x].confirmed);
+            for (let x = 0; x < singapore.length; x++) {
+                if (singapore[x].date.includes("-3-")) {
+                    marzo_singapore.push(singapore[x].confirmed);
                 }
             }
 
             console.log(marzo_indonesia);
-            console.log(marzo_malasia);
-            console.log(marzo_singapur);
+            console.log(marzo_malaysia);
+            console.log(marzo_singapore);
 
             /* 
             Con p5.js vamos por el JSON, creamos el canvas y también algunos arreglos con datos para visualizar. Con chart.js dibujamos en el canvas creado, aprovechando los arreglos de marzo (labels), marzo_chile, marzo_argentina y marzo_brasil (data). 
@@ -76,28 +76,28 @@
                     labels: marzo,
                     datasets: [{
                         label: 'Indonesia',
-                        backgroundColor: 'rgba(255, 55, 0,.1)',
-                        borderColor: 'rgb(255, 55, 0)',
+                        backgroundColor: 'rgba(0, 0, 0,.1)',
+                        borderColor: 'rgb(0, 0, 0)',
                         borderWidth: 2,
                         pointRadius: 2,
                         lineTension: 0,
                         data: marzo_indonesia
                     }, {
-                        label: 'Malasia',
-                        backgroundColor: 'rgba(75,175,245,.1)',
-                        borderColor: 'rgb(75,175,245)',
+                        label: 'Malaysia',
+                        backgroundColor: 'rgba(0,0,100,.1)',
+                        borderColor: 'rgb(0,0,100)',
                         borderWidth: 2,
                         pointRadius: 2,
                         lineTension: 0,
-                        data: marzo_malasia
+                        data: marzo_malaysia
                     }, {
-                        label: 'Singapur',
-                        backgroundColor: 'rgba(22, 184, 62,.1)',
-                        borderColor: 'rgb(22, 184, 62)',
+                        label: 'Singapore',
+                        backgroundColor: 'rgba(100, 0, 0,.1)',
+                        borderColor: 'rgb(100, 0, 0)',
                         borderWidth: 2,
                         pointRadius: 2,
                         lineTension: 0,
-                        data: marzo_singapur
+                        data: marzo_singapore
                     }]
                 },
                 options: {
